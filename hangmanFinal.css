@@ -1,0 +1,76 @@
+/*Doctype css
+Harrison Bergman
+CSE 270e
+Assignment 6 (jQuery)*/
+html{
+    background-image: url("http://bgfons.com/upload/lines_texture1095.jpg");
+}
+h1{
+    position: absolute;
+    color:floralwhite;
+    font-size: 200%;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+    top: 0%;
+    
+}
+
+p{
+    position: absolute;
+    color:floralwhite;
+    font-size: 90%;
+    text-align: center;
+    top: 10%;
+    right: 27%;
+    width: 45%;
+    height: 7%;
+    font-size: 20px;
+}
+
+footer{
+    position: absolute;
+    color:floralwhite;
+    font-size: 95%;
+    text-align: center;
+    top: 90%;
+    right: 41%;
+}
+#alphabet{
+    position: relative;
+    align-items:center;
+    top: 40%;
+    left: 9%;
+    font-size: 150%;
+    
+}
+
+#alphabet button{
+    background: black;
+    font-size: 100%;
+    color:floralwhite;
+    margin: 0.1%;    
+    border-radius: 60px;
+    box-shadow: 0px 9px 20px #eb0909;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 190%;
+    background: #db1111;
+    padding: .25% .25% .25% .25%;
+}
+
+#current{
+    position: absolute;
+    color:floralwhite;
+    font-size: 140px;
+    top: 22%;
+    left: 41%;
+}
+
+#guessesLeft{
+    position: absolute;
+    color:floralwhite;
+    font-size: 60px;
+    top: 55%;
+    left: 32%;
+}

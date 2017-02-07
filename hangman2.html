@@ -1,0 +1,133 @@
+<!Doctype html
+Harrison Bergman
+CSE 270e
+Assignment 6 (jQuery)>
+
+
+<html>
+    
+<head>
+    <title>Hangman Game</title>
+    <link rel = "stylesheet"
+          type = "text/css"
+          href = "hangmanFinal.css"/> 
+    
+    
+    <script      
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    
+</script>
+    
+<script>
+    
+    var guesses = 5;
+    var gameBoard = "";
+    var gameWord = "";
+    
+    //Sets up the horizontal line of letters
+        $(document).ready(function(){
+        //var holder = $('.alphabet');
+            
+        var alphabet = "abcdefghijklmnopqrstuvwxyz";
+        for (var i = 0; i < 26; i++) {
+            var letter = alphabet.substring(i,i+1);
+            $('#alphabet').append('<button id="alphabet" id="'+ letter +'">'+ letter +'</button>');
+            }
+    $('#alphabet').on('click', function(e){
+        //What to do when a letter is clicked
+        console.log(e);
+        game_Update(e);
+    })
+   
+    
+    var words = ["hangman", "banana", "random", "oxford", "poland", "luggage", "trophy", "airplane", "tower", "blanket", "apple", "cylinder", "brackets", "football", "carpet", "battery", "drawer", "wooden", "woven", "sweatshirt", "president", "lilac", "engine", "television", "technology", "javascript", "jquery", "facts", "telephone", "origin", "country", "immigrant", "california", "desktop", "master", "online", "deodorant", "celsius", "compress", "boxer", "colonel", "chicken", "bottle"];
+
+    var randomWordInt = Math.ceil(Math.random()*42);
+    gameWord = words[randomWordInt];
+
+    //length of random word
+            for(var x=0; x<gameWord.length; x++){
+                gameBoard+="-";
+                
+            }
+    
+        game_Update(null);
+        
+        
+    })
+
+  function game_Update(e){
+      if(e==null){
+          
+      }
+      else{
+         var letter = e.target.innerHTML;
+         e.target.remove();
+         console.log(letter);
+         var found = false;
+          
+         for(var x=0; x<gameWord.length; x++){
+               var myLetter = gameWord.substring(x,x+1).toLowerCase();
+               if(myLetter == letter){
+                   gameBoard=gameBoard.substring(0,x)+myLetter+
+                       gameBoard.substring(x+1,gameBoard.length);
+                   found = true;
+               }
+            }
+          if(!found){
+              guesses--;
+              if(guesses<=0){
+                  alert("YOU ARE OUT OF GUESSES, YOU LOST!!!! The word was " + gameWord);
+                  location.reload();
+              }
+          }
+          else{ 
+             var underscore = false;
+             for(var x=0; x<gameBoard.length; x++){
+                var myLetter = gameBoard.substring(x,x+1).toLowerCase();
+                if(myLetter == "-"){
+                   underscore=true;
+                }
+             }
+             if(!underscore){
+                alert("YOU Won!!! The word was " + gameWord);
+                    location.reload();
+                
+             }
+          }
+        }
+    $("#current").html(gameBoard);
+      if(guesses!=1){
+        $('#guessesLeft').html("You have " + guesses + " guesses left");
+      }
+      else{
+        $('#guessesLeft').html("You have " + guesses + " guess left");     
+      }
+  }  
+    
+</script>
+    
+</head>
+
+<body>
+    <h1>Harrison Bergman's Hangman Game</h1>
+    
+    <div id="alphabet"></div>
+            <div id="current"></div>
+    
+<p>
+    Guess the Word in 5 or fewer guesses
+<br>
+    Click on each letter to guess the word
+</p> 
+    
+    <div id="guessesLeft">You have 5 Guesses Left</div>
+    
+    
+</body>
+<footer>
+    Copyright Harrison Bergman - (C) 2017
+    
+</footer>
+
+</html> 
